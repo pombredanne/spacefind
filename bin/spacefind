@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+if ARGV.length < 1
+  puts "Usage: spacefind <phpfile(s)>"
+  exit(-1)
+end
+
+ARGV.each do |f|
+  if Spacefind.trailing_whitespace?(f)
+    puts "May contain whitespace: #{f}"
+  end
+end
