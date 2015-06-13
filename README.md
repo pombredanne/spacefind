@@ -1,6 +1,7 @@
 # Spacefind
 
 [![Build Status](https://img.shields.io/travis/t-richards/spacefind/master.svg)](https://travis-ci.org/t-richards/spacefind)
+[![Gem Version](https://badge.fury.io/rb/spacefind.svg)](http://badge.fury.io/rb/spacefind)
 
 Finds mischevious trailing whitespace after PHP closing tags.
 
