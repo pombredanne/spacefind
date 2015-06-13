@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/travis/t-richards/spacefind/master.svg)](https://travis-ci.org/t-richards/spacefind)
 [![Gem Version](https://badge.fury.io/rb/spacefind.svg)](http://badge.fury.io/rb/spacefind)
 
-Finds mischevious trailing whitespace after PHP closing tags.
+Finds mischievous trailing whitespace after PHP closing tags.
 
 ## Installation
 
