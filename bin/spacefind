@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+require 'spacefind'
+
 if ARGV.length < 1
   puts "Usage: spacefind <phpfile(s)>"
   exit(-1)
