@@ -1,14 +1,33 @@
 #!/usr/bin/env ruby
 
 require 'spacefind'
+require 'slop'
 
-if ARGV.length < 1
-  puts "Usage: spacefind <phpfile(s)>"
-  exit(-1)
-end
-
-ARGV.each do |f|
-  if Spacefind.trailing_whitespace?(f)
-    puts "May contain whitespace: #{f}"
+opts = Slop.parse do |o|
+  o.string '-d', '--dir', 'Specify an alternate directory to search (default: working directory)'
+  o.bool '-u', '--unlimited', 'Search all files (default: only search .php files)'
+  o.bool '-q', '--quiet', 'Quiet mode: suppress all non-essential output'
+  o.on '-h', '--help' do
+    puts o
+    exit
+  end
+  o.on '--version' 'Print version' do
+    puts Spacefind::VERSION
+    exit
   end
 end
+
+pattern = '**/*'
+pattern = File.join(opts[:dir], pattern) unless opts[:dir].nil?
+pattern += '.php' unless opts.unlimited?
+
+puts "Searching #{pattern} for trailing whitespace..." unless opts.quiet?
+
+Dir.glob(pattern) do |f|
+  next unless File.file?(f)
+  next unless Spacefind.trailing_whitespace?(f)
+
+  puts "May contain whitespace: #{f}"
+end
+
+puts "Done." unless opts.quiet?
