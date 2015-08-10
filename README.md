@@ -1,9 +1,10 @@
-# Spacefind
+[![Spacefind Logo](/images/spacefind-logo.png)](/images/spacefind-logo.png)
+
+Spacefind is a command-line tool that helps find mischievous trailing whitespace after PHP closing tags.
 
 [![Build Status](https://img.shields.io/travis/t-richards/spacefind/master.svg)](https://travis-ci.org/t-richards/spacefind)
-[![Gem Version](https://badge.fury.io/rb/spacefind.svg)](http://badge.fury.io/rb/spacefind)
-
-Finds mischievous trailing whitespace after PHP closing tags.
+[![Gem Version](https://img.shields.io/gem/v/spacefind.svg)](https://rubygems.org/gems/spacefind)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/t-richards/spacefind/master/LICENSE)
 
 ## Installation
 
@@ -28,16 +29,17 @@ $ bundle
 ## Usage
 
 ```bash
-# Usage:
-$ spacefind <phpfile(s)>
+# Usage
+$ spacefind [options]
 
-# Check .php files in the current directory
-$ spacefind *.php
+# Check all .php files in the current directory and subdirectories
+$ spacefind
 May contain whitespace: foo.php
-
-# Check .php files in the current directory and all subdirectories
-$ find . -name "*.php" -exec spacefind "{}" \;
 May contain whitespace: foo/bar.php
+
+# Get more detailed usage information
+$ spacefind --help
+
 ```
 
 ## Contributing

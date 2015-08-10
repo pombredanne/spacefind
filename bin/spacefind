@@ -4,14 +4,14 @@ require 'spacefind'
 require 'slop'
 
 opts = Slop.parse do |o|
-  o.string '-d', '--dir', 'Specify an alternate directory to search (default: working directory)'
+  o.string '-d', '--dir', 'Search an alternate directory (default: CWD)'
   o.bool '-u', '--unlimited', 'Search all files (default: only search .php files)'
-  o.bool '-q', '--quiet', 'Quiet mode: suppress all non-essential output'
-  o.on '-h', '--help' do
+  o.bool '-q', '--quiet', 'Suppress all non-essential output'
+  o.on '-h', '--help', 'Show this help message' do
     puts o
     exit
   end
-  o.on '--version' 'Print version' do
+  o.on '--version', 'Print version' do
     puts Spacefind::VERSION
     exit
   end
