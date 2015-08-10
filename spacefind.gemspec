@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Finds mischevious trailing whitespace after PHP closing tags.}
   spec.homepage      = 'https://github.com/t-richards/spacefind'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features|images)/}) }
   spec.executables   = 'spacefind'
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
