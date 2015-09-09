@@ -21,13 +21,13 @@ pattern = '**/*'
 pattern = File.join(opts[:dir], pattern) unless opts[:dir].nil?
 pattern += '.php' unless opts.unlimited?
 
-puts "Searching #{pattern} for trailing whitespace..." unless opts.quiet?
+puts "Searching #{pattern} for problems..." unless opts.quiet?
 
 Dir.glob(pattern) do |f|
   next unless File.file?(f)
-  next unless Spacefind.trailing_whitespace?(f)
+  next unless Spacefind.problematic?(f)
 
-  puts "May contain whitespace: #{f}"
+  puts "Potentially problematic file: #{f}"
 end
 
 puts "Done." unless opts.quiet?
