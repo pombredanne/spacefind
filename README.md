@@ -1,6 +1,8 @@
 [![Spacefind Logo](/images/spacefind-logo.png)](/images/spacefind-logo.png)
 
-Spacefind is a command-line tool that helps find problematic whitespace and other mischevous characters in PHP source code files..
+Spacefind is a command-line tool that helps find mischievous whitespace and
+other critically-problematic characters in PHP source code files. It is not
+intended to be a comprehensive code style checker or linting solution.
 
 [![Build Status](https://img.shields.io/travis/t-richards/spacefind/master.svg)](https://travis-ci.org/t-richards/spacefind)
 [![Gem Version](https://img.shields.io/gem/v/spacefind.svg)](https://rubygems.org/gems/spacefind)
@@ -40,8 +42,14 @@ $ spacefind [options]
 
 # Check all .php files in the current directory and subdirectories
 $ spacefind
-Potentially problematic file: foo.php
-Potentially problematic file: foo/bar.php
+Searching **/*.php for problems...
+in test/fixtures/bad/0-trailing.php:
+	SP0002: Trailing whitespace detected.
+in test/fixtures/bad/1-leading.php:
+	SP0001: Leading whitespace detected.
+in test/fixtures/bad/2-bom.php:
+	SP0003: UTF-8 byte-order mark detected.
+Done.
 
 # Get more detailed usage information
 $ spacefind --help

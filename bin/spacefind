@@ -2,6 +2,9 @@
 
 require 'spacefind'
 require 'slop'
+require 'term/ansicolor'
+
+include Term::ANSIColor
 
 opts = Slop.parse do |o|
   o.string '-d', '--dir', 'Search an alternate directory (default: CWD)'
@@ -25,9 +28,13 @@ puts "Searching #{pattern} for problems..." unless opts.quiet?
 
 Dir.glob(pattern) do |f|
   next unless File.file?(f)
-  next unless Spacefind.problematic?(f)
+  problems = Spacefind.scan_for_problems(f)
+  next if problems.empty?
 
-  puts "Potentially problematic file: #{f}"
+  puts 'in ' + bold { f } + ':'
+  problems.each do |p|
+    puts "\t" + red { p.description }
+  end
 end
 
 puts "Done." unless opts.quiet?

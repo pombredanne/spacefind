@@ -1,16 +1,20 @@
-require "spacefind/version"
+require 'spacefind/problems'
 
 module Spacefind
   module_function
 
-  def problematic?(f)
+  def scan_for_problems(f)
+    problems = []
     contents = File.read(f)
-    !!(
-      contents.match(/\A\s+<\?php/m) || # Leading whitespace
-      contents.match(/\?>\s{2,}\Z/m) || # Trailing whitespace
-      contents.match(/\A\uFEFF/)        # UTF-8 Byte Order Mark
-    )
+
+    problems << LeadingWhitespaceProblem.new if contents.match(/\A\s+<\?php/m)
+    problems << TrailingWhitespaceProblem.new if contents.match(/\?>\s{2,}\Z/m)
+    problems << ByteOrderMarkProblem.new if contents.match(/\A\uFEFF/)
+
+    problems
   rescue ArgumentError
-    false
+    [
+      InvalidByteSequenceProblem.new
+    ]
   end
 end

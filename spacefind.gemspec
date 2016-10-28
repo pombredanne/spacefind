@@ -23,4 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
 
   spec.add_dependency 'slop', '~> 4.2.0'
+  spec.add_dependency 'term-ansicolor', '~> 1.4.0'
 end
