@@ -1,5 +1,6 @@
 require 'spacefind/problems'
 
+# Problematic character finder
 module Spacefind
   module_function
 
@@ -7,9 +8,9 @@ module Spacefind
     problems = []
     contents = File.read(f)
 
-    problems << LeadingWhitespaceProblem.new if contents.match(/\A\s+<\?php/m)
-    problems << TrailingWhitespaceProblem.new if contents.match(/\?>\s{2,}\Z/m)
-    problems << ByteOrderMarkProblem.new if contents.match(/\A\uFEFF/)
+    problems << LeadingWhitespaceProblem.new if /\A\s+<\?php/m =~ contents
+    problems << TrailingWhitespaceProblem.new if /\?>\s{2,}\Z/m =~ contents
+    problems << ByteOrderMarkProblem.new if contents.start_with?("\uFEFF")
 
     problems
   rescue ArgumentError

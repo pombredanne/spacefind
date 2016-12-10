@@ -10,11 +10,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Tom Richards']
   spec.email         = ['tom@tomrichards.net']
 
-  spec.summary       = %q{Finds problematic characters in PHP source code files.}
-  spec.description   = %q{Finds problematic characters in PHP source code files.}
+  spec.summary       = 'Finds problematic characters in PHP source code files.'
+  spec.description   = 'Finds problematic characters in PHP source code files.'
   spec.homepage      = 'https://github.com/t-richards/spacefind'
 
-  spec.files         = `git ls-files -z`.split("\x0").grep(%r{^(LICENSE|README.md|bin/spacefind|lib)})
+  spec.files         = `git ls-files -z`.split("\x0").grep(/^(LICENSE|README\.md|lib)/)
+  spec.bindir        = 'exe'
   spec.executables   = 'spacefind'
   spec.require_paths = ['lib']
 

@@ -8,7 +8,7 @@ include Term::ANSIColor
 
 opts = Slop.parse do |o|
   o.string '-d', '--dir', 'Search an alternate directory (default: CWD)'
-  o.bool '-u', '--unlimited', 'Search all files (default: only search .php files)'
+  o.bool '-u', '--unlimited', 'Search all files (default: only *.{php,phtml} files)'
   o.bool '-q', '--quiet', 'Suppress all non-essential output'
   o.on '-h', '--help', 'Show this help message' do
     puts o
@@ -22,7 +22,7 @@ end
 
 pattern = '**/*'
 pattern = File.join(opts[:dir], pattern) unless opts[:dir].nil?
-pattern += '.php' unless opts.unlimited?
+pattern += '.{php,phtml}' unless opts.unlimited?
 
 puts "Searching #{pattern} for problems..." unless opts.quiet?
 
@@ -37,4 +37,4 @@ Dir.glob(pattern) do |f|
   end
 end
 
-puts "Done." unless opts.quiet?
+puts 'Done.' unless opts.quiet?
