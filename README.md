@@ -1,7 +1,7 @@
 [![Spacefind Logo](/images/spacefind-logo.png)](/images/spacefind-logo.png)
 
 Spacefind is a command-line tool that helps find mischievous whitespace and
-other critically-problematic characters in PHP source code files. It is not
+other critically problematic characters in PHP source code files. It is not
 intended to be a comprehensive code style checker or linting solution.
 
 [![Build Status](https://img.shields.io/travis/t-richards/spacefind/master.svg)](https://travis-ci.org/t-richards/spacefind)
@@ -42,19 +42,26 @@ $ spacefind [options]
 
 # Check all .php files in the current directory and subdirectories
 $ spacefind
-Searching **/*.php for problems...
-in test/fixtures/bad/0-trailing.php:
-	SP0002: Trailing whitespace detected.
+Searching **/*.{php,phtml} for problems...
+in test/fixtures/bad/4-invalid-utf8.php:
+	SP0004: Invalid UTF-8 byte sequence detected.
 in test/fixtures/bad/1-leading.php:
 	SP0001: Leading whitespace detected.
-in test/fixtures/bad/2-bom.php:
+in test/fixtures/bad/2-trailing.php:
+	SP0002: Trailing whitespace detected.
+in test/fixtures/bad/3-bom.php:
 	SP0003: UTF-8 byte-order mark detected.
 Done.
+
 
 # Get more detailed usage information
 $ spacefind --help
 
 ```
+
+# Documentation
+
+Please [visit the wiki][wiki] for a complete description of each `SP` code.
 
 ## Contributing
 
@@ -63,3 +70,5 @@ $ spacefind --help
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+[wiki]: https://github.com/t-richards/spacefind/wiki
